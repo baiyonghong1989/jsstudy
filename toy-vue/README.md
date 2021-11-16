@@ -1,3 +1,81 @@
+# toyVue vue基础双向绑定实现
+
+**toy-vue2**：get set 使用观察者模式完成简单的vue2双向绑定
+**toy-vue3**：proxy reactive 完成vue3的基础指令的双向绑定
+
+##核心代码解析(vue2)
+```javascript
+let currentHandler = null;
+export class Vue {
+  constructor(opt) {
+    this.opt = opt;
+    this.observe(opt.data);
+    let root = document.querySelector(opt.el);
+    this.compile(root);
+  }
+  // 为响应式对象 data 里的每一个 key 绑定一个观察者对象
+  observe(data) {
+    Object.keys(data).forEach((key) => {
+      let subject = new Subject();
+      data["_" + key] = data[key];
+      // 通过 getter setter 暴露 for 循环中作用域下的 obv，闭包产生
+      Object.defineProperty(data, key, {
+        get() {
+          currentHandler && subject.add(currentHandler);
+          return data["_" + key];
+        },
+        set(newVal) {
+          subject.notify(newVal);
+          data["_" + key] = newVal;
+        },
+      });
+    });
+  }
+  // 初始化页面，遍历 DOM，收集每一个key变化时，随之调整的位置，以观察者方法存放起来
+  compile(node) {
+    [].forEach.call(node.childNodes, (child) => {
+      if (!child.firstElementChild && /\{\{(.*)\}\}/.test(child.innerHTML)) {
+        let key = RegExp.$1.trim();
+        let handler = (val) => {
+          child.innerHTML = val;
+        };
+        handler(this.opt.data[key]);
+        currentHandler = new Observer(handler);
+        // 通过触发对象的get完成subject的订阅
+        this.opt.data[key];
+        currentHandler = null;
+      } else if (child.firstElementChild) this.compile(child);
+    });
+  }
+}
+// 被观察者
+class Subject {
+  constructor() {
+    this.observers = [];
+  }
+  add(observer) {
+    this.observers.push(observer);
+  }
+  notify(newVal) {
+    this.observers.forEach((observer) => {
+      observer.update(newVal);
+    });
+  }
+}
+
+class Observer {
+  constructor(handler) {
+    this.handler = handler;
+  }
+  update(...params) {
+    this.handler(...params);
+  }
+}
+
+```
+
+##核心代码解析(vue3)
+```javascript
 export class ToyVue {
   constructor(config) {
     this.template = document.querySelector(config.el);
@@ -114,3 +192,12 @@ function effect(fn) {
   fn();
   currentEffect = null;
 }
+
+```
+
+
+VUE3中的reactive实现数据的绑定主要结构。vue3中的proxy是对整个对象进行代理，而vue2中是针对每个对象的属性进行get、set的监听。
+
+[vue2源码解读](https://www.cnblogs.com/polk6/p/13687213.html)
+
+[vue2源码走读](https://segmentfault.com/a/1190000017969385)
