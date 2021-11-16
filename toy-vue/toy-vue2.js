@@ -1,3 +1,4 @@
+let currentHandler = null;
 export class Vue {
   constructor(opt) {
     this.opt = opt;
@@ -8,17 +9,17 @@ export class Vue {
   // 为响应式对象 data 里的每一个 key 绑定一个观察者对象
   observe(data) {
     Object.keys(data).forEach((key) => {
-      let obv = new Observer();
-      data['_' + key] = data[key];
+      let subject = new Subject();
+      data["_" + key] = data[key];
       // 通过 getter setter 暴露 for 循环中作用域下的 obv，闭包产生
       Object.defineProperty(data, key, {
         get() {
-          Observer.target && obv.addSubNode(Observer.target);
-          return data['_' + key];
+          currentHandler && subject.add(currentHandler);
+          return data["_" + key];
         },
         set(newVal) {
-          obv.update(newVal);
-          data['_' + key] = newVal;
+          subject.notify(newVal);
+          data["_" + key] = newVal;
         },
       });
     });
@@ -28,30 +29,40 @@ export class Vue {
     [].forEach.call(node.childNodes, (child) => {
       if (!child.firstElementChild && /\{\{(.*)\}\}/.test(child.innerHTML)) {
         let key = RegExp.$1.trim();
-        child.innerHTML = child.innerHTML.replace(
-          new RegExp('\\{\\{\\s*' + key + '\\s*\\}\\}', 'gm'),
-          this.opt.data[key],
-        );
-        Observer.target = child;
+        let handler = (val) => {
+          child.innerHTML = val;
+        };
+        handler(this.opt.data[key]);
+        currentHandler = new Observer(handler);
+        // 通过触发对象的get完成subject的订阅
         this.opt.data[key];
-        Observer.target = null;
+        currentHandler = null;
       } else if (child.firstElementChild) this.compile(child);
     });
   }
 }
-// 常规观察者类
-class Observer {
+// 被观察者
+class Subject {
   constructor() {
-    this.subNode = [];
+    this.observers = [];
   }
-  addSubNode(node) {
-    this.subNode.push(node);
+  add(observer) {
+    this.observers.push(observer);
   }
-  update(newVal) {
-    this.subNode.forEach((node) => {
-      node.innerHTML = newVal;
+  notify(newVal) {
+    this.observers.forEach((observer) => {
+      observer.update(newVal);
     });
   }
 }
 
+class Observer {
+  constructor(handler) {
+    this.handler = handler;
+  }
+  
+  update(...params) {
+    this.handler(...params);
+  }
+}
 
