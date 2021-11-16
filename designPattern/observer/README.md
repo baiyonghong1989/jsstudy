@@ -1,5 +1,5 @@
 # js 观察者模式与发布订阅模式
-##Observer.js 观察者模式
+## Observer.js 观察者模式
 
 基本要素：
 
@@ -96,4 +96,5 @@ publishEvent.dispatchEvent('click',12)
 
 
 **图注**
-![]()
+![](https://raw.githubusercontent.com/baiyonghong1989/study/main/designPattern/observer/assets/observer%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png)
+图1：观察者模式
