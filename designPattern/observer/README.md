@@ -45,7 +45,8 @@ class Subject {
   sub1.add(obs2);
   sub1.notify(123);
 ```
-
+![](https://raw.githubusercontent.com/baiyonghong1989/study/main/designPattern/observer/assets/observer%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png)
+图1：观察者模式
 ## 发布订阅模式
 基本要素：
 - Event 消息通道
@@ -96,5 +97,10 @@ publishEvent.dispatchEvent('click',12)
 
 
 **图注**
-![](https://raw.githubusercontent.com/baiyonghong1989/study/main/designPattern/observer/assets/observer%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png)
-图1：观察者模式
+
+
+![](https://raw.githubusercontent.com/baiyonghong1989/study/main/designPattern/observer/assets/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.png)
+图2：发布订阅模式
+
+附：
+[知乎-观察者模式vs发布订阅模式](https://zhuanlan.zhihu.com/p/51357583)
