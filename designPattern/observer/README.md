@@ -102,5 +102,10 @@ publishEvent.dispatchEvent('click',12)
 ![](https://raw.githubusercontent.com/baiyonghong1989/study/main/designPattern/observer/assets/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.png)
 图2：发布订阅模式
 
-附：
-[知乎-观察者模式vs发布订阅模式](https://zhuanlan.zhihu.com/p/51357583)
+附：[知乎-观察者模式vs发布订阅模式](https://zhuanlan.zhihu.com/p/51357583)
+![](https://raw.githubusercontent.com/baiyonghong1989/study/main/designPattern/observer/assets/zhihu-%E5%8F%91%E5%B8%83%E8%80%85%E6%A8%A1%E5%BC%8FVS%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.jpg)
+
+###个人总结
+两种场景的使用跟实际情况相关，订阅者是订阅一个发布者还是一类发布者，**若是一类发布者应该使用发布订阅模式。另外，在整个运行周期内发布者和订阅者是否能够互相感知，或者能否保证订阅者发起订阅时发布者是否已经准备就绪等场景。**
+
+使用发布订阅模式，解耦出来的event队列能够做更多的事情，比如调整执行顺序和过滤等等，再扩展就是消息队列。
