@@ -8,8 +8,8 @@ export class Watcher{
         this.id =  ++uid;
         this.deps = new Set();
         this.dpeIds = new Set();
-        this.getter = expOrFn;
-        this.cb = cb;
+        this.getter = expOrFn;   // watcher更新时执行的function
+        this.cb = cb;   
         this.value = this.get();
     }
     get(){

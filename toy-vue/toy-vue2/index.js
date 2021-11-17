@@ -1,6 +1,12 @@
 import { observe } from "./Observer.js";
 import { Watcher } from "./Watcher.js";
-
+let obj = {
+    a:{
+        b:1
+    }
+}
+observe(obj);
+window.obj = obj;
 export class Vue {
     constructor(opt) {
       this.opt = opt;
