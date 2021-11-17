@@ -3,7 +3,7 @@
 **toy-vue2**：get set 使用观察者模式完成简单的vue2双向绑定
 **toy-vue3**：proxy reactive 完成vue3的基础指令的双向绑定
 
-##模拟vue2代码实现(vue2)
+## 模拟vue2代码实现(vue2)
 ```javascript
 let currentHandler = null;
 export class Vue {
@@ -74,7 +74,7 @@ class Observer {
 
 ```
 
-##模拟代码实现(vue3)
+## 模拟代码实现(vue3)
 ```javascript
 export class ToyVue {
   constructor(config) {

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app-5">
+        <p>{{ message }}</p>
+      </div>
+</body>
+</html>
+<script type="module">
+    import {  Vue} from './index.js';
+    var app5 = new Vue({
+      el: '#app-5',
+      data: {
+        message: 'Hello Vue.js!',
+      }
+    });
+    setTimeout(()=>{
+      app5.opt.data.message = 'hahah'
+    },3000)
+  </script>
