@@ -235,7 +235,7 @@ observe(obj);
 
 数据改变时，defineReactive中的dep实例已经足够通知相应的watcher进行update了。那么为啥还要在对象a中添加__ob__这个observer呢。
 
-**这个实际上主要是为了兼容数组使用的**。因为数组时没有办法劫持get、set的，没有办法在defineReactive中创建闭包中的dep。
+**这个实际上主要是为了兼容数组使用的**。因为数组是没有办法劫持get、set的，没有办法在defineReactive中创建闭包中的dep。
 
 observe在数组的处理中，劫持了数组的相关api，在触发相关的api时会主动通知数组的__ob__的notify，触发相关Watcher的更新。
 
