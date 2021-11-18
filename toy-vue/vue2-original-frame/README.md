@@ -1,4 +1,8 @@
 # vue2源码基础框架实现解析
+
+Vue2中的双向绑定主流程如下：
+![](https://raw.githubusercontent.com/baiyonghong1989/study/main/toy-vue/vue2-original-frame/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+
 ## 基础框架类说明
 - class Watcher
 - class Observer && function observe 
