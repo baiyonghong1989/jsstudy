@@ -1,7 +1,7 @@
 # vue2源码基础框架实现解析
 
 Vue2中的双向绑定主流程如下：
-![](https://raw.githubusercontent.com/baiyonghong1989/study/main/toy-vue/vue2-original-frame/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+![](https://raw.githubusercontent.com/baiyonghong1989/study/main/toy-vue/vue2-original-frame/assets/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 
 ## 基础框架类说明
 - class Watcher
@@ -11,7 +11,7 @@ Vue2中的双向绑定主流程如下：
 ### Watcher:
 观察者类，为常规观察者模式中的Observer，数据变化时通知的对象。数据变化时触发vue组件的更新。数据改变时Watcher触发update，watcher的update进行component的render和update。
 Watcher的更新可参考官网图，如下
-![](https://raw.githubusercontent.com/baiyonghong1989/study/main/toy-vue/toy-vue2/Watcher_update.png)
+![](https://raw.githubusercontent.com/baiyonghong1989/study/main/toy-vue/vue2-original-frame/assets/Watcher_update.png)
 
 **vue2源码中核心Watcher的挂载如下：**
 
@@ -235,7 +235,7 @@ let obj = {
 observe(obj);
 ```
 添加响应式后的dep绑定如下：
-![](https://raw.githubusercontent.com/baiyonghong1989/study/main/toy-vue/toy-vue2/object_after_reactive.png)
+![](https://raw.githubusercontent.com/baiyonghong1989/study/main/toy-vue/vue2-original-frame/assets/object_after_reactive.png)
 
 数据改变时，defineReactive中的dep实例已经足够通知相应的watcher进行update了。那么为啥还要在对象a中添加__ob__这个observer呢。
 
