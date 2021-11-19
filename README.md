@@ -1,4 +1,4 @@
-# jsstudy
+# 学习笔记
 
 1. [观察者模式/发布订阅者模式](designPattern/observer/README.md)
 2. [redux 实现解析](redux/README.md)
