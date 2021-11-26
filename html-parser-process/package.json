@@ -1,0 +1,14 @@
+{
+  "name": "html-parser-process",
+  "version": "1.0.0",
+  "description": "附：[掘金文章：html的渲染过程](https://juejin.cn/post/6844904040346681358)\r 1. 启动\r    ```javascript\r    cd /html-parser-process\r    npm install \r    node index.js\r    ```\r 2. css对html的阻塞一览: http://localhost:3000/index_css_block.html\r 3. async js的加载：http://localhost:3000/index_async.html\r 4. defer js的加载：http://localhost:3000/index_defer.html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
