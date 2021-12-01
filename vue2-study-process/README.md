@@ -184,4 +184,24 @@ Your Profile
 2. extend
 3. directive
 4. render 渲染函数 jsx
-5. 函数式组件
+5. 函数式组件/递归组件
+
+## 关于测试
+ 1. 框架测试
+    - Jest 专注于简易型的js测试框架
+    - Mocha 专注于灵活性的js测试框架，可以在浏览器运行而不仅是node
+ 2. 组件测试
+    - Vue Testing Library (@testing-library/vue)  推荐
+    - Vue Test Utils   不推荐，偏底层
+ 3. e2e测试
+    - Cypress.io 推荐
+    - Nightwatch.js 
+    - Puppeteer
+    - TestCafe
+## 路由
+   - vue router
+    附:[官方简易版路由实现](https://github.com/chrisvfritz/vue-2.0-simple-routing-example)
+## 状态管理
+   - vuex
+## ssr
+   - nuxt.js
