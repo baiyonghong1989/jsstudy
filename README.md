@@ -5,3 +5,4 @@
 3. vue双向绑定解析
     - [基于vue2 getter setter 和vue3 proxy的双向绑定的简易实现](toy-vue/README.md)
     - [vue2源码框架解析](toy-vue/vue2-original-frame/README.md)
+4. [chrome插件开发](chrome-extension/README.md)
