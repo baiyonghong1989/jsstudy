@@ -1,0 +1,15 @@
+{
+  "name": "ts-study",
+  "version": "1.0.0",
+  "description": "包括null,undefined,string,number,void,boolean,any\r ```ts\r const num: number = 123;\r let str: string = \"tom\";\r let isTs: boolean = true;",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jquery": "^3.5.9",
+    "@types/node": "^16.11.11"
+  }
+}
